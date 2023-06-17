@@ -1,0 +1,566 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+		   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xsi:type="TaskPaneApp">	
+	<Id>6F6ECD00-766E-4BBE-87E2-D69B71F211B9</Id>
+	<Version>1.0.0.0</Version>
+
+	<!--<ProviderName>[Provider name]</ProviderName>-->
+	<ProviderName>[interSyntax]</ProviderName>
+	<DefaultLocale>fr-FR</DefaultLocale>	
+	<DisplayName DefaultValue="No$"/>
+		<!--<Override Locale="fr-FR" Value="No$" />
+	</DisplayName>-->
+	<Description DefaultValue="No$ description."/>	
+	<IconUrl DefaultValue="~remoteAppUrl/Images/No$32.png" />
+	<HighResolutionIconUrl DefaultValue="~remoteAppUrl/Images/No$64.png" />
+	<SupportUrl DefaultValue="https://interSyntax.net" />
+	<Hosts>
+		<Host Name="Workbook" />		
+	</Hosts>
+	<Requirements>	
+		<Sets DefaultMinVersion="1.1">
+			<Set Name="SharedRuntime" MinVersion="1.1"/>
+			<Set Name="ExcelApi" MinVersion="1.3"/>
+			<Set Name="DialogApi" MinVersion="1.1"/>
+			<Set Name ="AddinCommands" MinVersion ="1.1"/>
+			<Set Name="CustomFunctionsRuntime" MinVersion="1.1"/>
+		</Sets>
+	</Requirements>	
+	<DefaultSettings>		
+		<SourceLocation DefaultValue="~remoteAppUrl" />
+	</DefaultSettings>
+	<Permissions>ReadWriteDocument</Permissions>
+	<!-- Begin Add-in Commands Mode integration. -->
+	<VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+		<Hosts>			
+			<Host xsi:type="Workbook">
+				<Runtimes>
+					<Runtime resid="Contoso.SharedRuntime.Url" lifetime="long" />
+					<!--<Runtime resid="Contoso.FunctionFile.Url" lifetime="long" />-->  
+				</Runtimes>
+				
+				<AllFormFactors>
+				  <!-- <ExtensionPoint xsi:type="CustomFunctions"> -->
+					<!-- <Script> -->
+					  <!-- <SourceLocation resid="Functions.Script.Url"/> -->
+					<!-- </Script> -->
+					<!-- <Page> -->
+						<!-- <SourceLocation resid="Contoso.SharedRuntime.Url"/>																				 -->
+					<!-- </Page> -->
+					<!-- <Metadata> -->
+					  <!-- <SourceLocation resid="Functions.Metadata.Url"/> -->
+					<!-- </Metadata> -->
+					<!-- <Namespace resid="Functions.Namespace"/> -->
+				  <!-- </ExtensionPoint> -->
+				</AllFormFactors>
+				
+				<!-- Form factor. Currently only DesktopFormFactor is supported. -->
+				<DesktopFormFactor>
+					<!--"This code enables a customizable message to be displayed when the add-in is loaded successfully upon individual install."-->
+					<GetStarted>
+						<!--Title of the Getting Started callout. resid points to a ShortString resource -->
+						<Title resid="Contoso.GetStarted.Title"/>
+						<!-- Description of the Getting Started callout. resid points to a LongString resource -->
+						<Description resid="Contoso.GetStarted.Description"/>
+						<!-- Point to a url resource which details how the add-in should be used. -->
+						<LearnMoreUrl resid="Contoso.GetStarted.LearnMoreUrl"/>
+					</GetStarted>
+					<FunctionFile resid="Contoso.SharedRuntime.Url"/>
+					<!--<FunctionFile resid="Contoso.FunctionFile.Url" />-->
+					 <!--PrimaryCommandSurface is the main Office Ribbon.-->
+					<ExtensionPoint xsi:type="PrimaryCommandSurface">
+						<CustomTab id="Contoso.Group1Label">
+							<Group id="Accès">							
+								<Label resid="Contoso.Group2Label"/>								
+								<Icon>
+									<bt:Image size="16" resid="Contoso.tpicon_16x16" />
+									<bt:Image size="32" resid="Contoso.tpicon_32x32" />
+									<bt:Image size="80" resid="Contoso.tpicon_80x80" />
+								</Icon>
+																	<!--<Control xsi:type="Button" id="residLabel" >-->
+									<Control xsi:type="Button" id="Ouvrir" >
+									<Label resid="residLabel" />
+									<Supertip>
+										<Title resid="Contoso.TaskpaneButton.Label3"  />
+										<Description resid="Contoso.TaskpaneButton.Lancer"  />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.No$_16x16" />
+										<bt:Image size="20" resid="Contoso.No$_20x20" />
+										<bt:Image size="24" resid="Contoso.No$_24x24" />
+										<bt:Image size="32" resid="Contoso.No$_32x32" />
+										<bt:Image size="40" resid="Contoso.No$_40x40" />
+										<bt:Image size="80" resid="Contoso.No$_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>lancerchaîné</FunctionName>
+									</Action>
+									<Enabled>true</Enabled>
+									</Control>
+																			<!--<Control xsi:type="Button" id="residLabel9" >-->
+									<!--<Control xsi:type="Button" id="Suspendre" >
+									<Label resid="residLabel9" />
+									<Supertip>
+										<Title resid="Contoso.TaskpaneButton.Label4"  />
+										<Description resid="Contoso.TaskpaneButton.Suspendre"  />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Yo$_16x16" />
+										<bt:Image size="20" resid="Contoso.Yo$_20x20" />
+										<bt:Image size="24" resid="Contoso.Yo$_24x24" />
+										<bt:Image size="32" resid="Contoso.Yo$_32x32" />
+										<bt:Image size="40" resid="Contoso.Yo$_40x40" />
+										<bt:Image size="80" resid="Contoso.Yo$_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>désactiver</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+									</Control>-->
+								<Control xsi:type="Button" id="préinitier">
+								  <Label resid="Contoso.Group5Label" />
+								  <Supertip>                  
+									<Title resid="Contoso.Group5Label" />                    
+									<Description resid="Contoso.TaskpaneButton.Tooltip" />
+								  </Supertip>
+								  <Icon>
+									  <bt:Image size="16" resid="Contoso.No$_16x16" />
+										<bt:Image size="20" resid="Contoso.No$_20x20" />
+										<bt:Image size="24" resid="Contoso.No$_24x24" />
+										<bt:Image size="32" resid="Contoso.No$_32x32" />
+										<bt:Image size="40" resid="Contoso.No$_40x40" />
+										<bt:Image size="80" resid="Contoso.No$_80x80" />
+								  </Icon>
+									 <Action xsi:type="ShowTaskpane">
+									<TaskpaneId>ButtonId1</TaskpaneId>                   
+									<SourceLocation resid="Contoso.SharedRuntime.Url" />
+								  </Action>											
+								</Control>			
+							</Group>
+																			<!--<Group id="Contoso.Group3Label">-->
+							    <!--<Group id="Construction">
+							    <Label resid="Contoso.Group3Label" />
+																	--><!--<Label resid="réinit" />--><!--
+								<Icon>
+									<bt:Image size="16" resid="Contoso.Réinit_16x16" />
+									<bt:Image size="20" resid="Contoso.Réinit_20x20" />
+									<bt:Image size="24" resid="Contoso.Réinit_24x24" />
+									<bt:Image size="32" resid="Contoso.Réinit_32x32" />
+									<bt:Image size="40" resid="Contoso.Réinit_40x40" />
+									<bt:Image size="80" resid="Contoso.Réinit_80x80" />
+								</Icon>
+																			--><!--<Control xsi:type="Button" id="residLabel6" >--><!--
+									<Control xsi:type="Button" id="Réinit" >
+									<Label resid="residLabel6" />
+									<Supertip>
+										<Title resid="residLabel6"  />
+										<Description resid="Contoso.TaskpaneButton.Réinit"  />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Réinit_16x16" />
+										<bt:Image size="20" resid="Contoso.Réinit_20x20" />
+										<bt:Image size="24" resid="Contoso.Réinit_24x24" />
+										<bt:Image size="32" resid="Contoso.Réinit_32x32" />
+										<bt:Image size="40" resid="Contoso.Réinit_40x40" />
+										<bt:Image size="80" resid="Contoso.Réinit_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>initialiser</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+									</Control>
+																				--><!--<Control xsi:type="Button" id="residLabel7" >--><!--
+									<Control xsi:type="Button" id="Sauver" >
+									<Label resid="residLabel7" />
+									<Supertip>
+										<Title resid="residLabel7"  />
+										<Description resid="Contoso.TaskpaneButton.Sauver"  />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Sauver_16x16" />
+										<bt:Image size="20" resid="Contoso.Sauver_20x20" />
+										<bt:Image size="24" resid="Contoso.Sauver_24x24" />
+										<bt:Image size="32" resid="Contoso.Sauver_32x32" />
+										<bt:Image size="40" resid="Contoso.Sauver_40x40" />
+										<bt:Image size="80" resid="Contoso.Sauver_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>sauver</FunctionName>
+									</Action>									 
+									<Enabled>false</Enabled>								 
+									</Control>
+									
+								</Group>
+																		--><!--<Group id="Contoso.Group4Label">--><!--
+							    <Group id="Commandes">
+								<Label resid="Contoso.Group4Label" />
+								<Icon>
+									<bt:Image size="16" resid="Contoso.Réinit_16x16" />
+									<bt:Image size="20" resid="Contoso.Réinit_20x20" />
+									<bt:Image size="24" resid="Contoso.Réinit_24x24" />
+									<bt:Image size="32" resid="Contoso.Réinit_32x32" />
+									<bt:Image size="40" resid="Contoso.Réinit_40x40" />
+									<bt:Image size="80" resid="Contoso.Réinit_80x80" />
+								</Icon>
+									
+								<Control xsi:type="Button" id="Copier" >
+									<Label resid="residLabel1"/>
+									<Supertip>
+										<Title resid="residLabel" />
+										<Description resid="residToolTip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Copier_16x16" />
+										<bt:Image size="20" resid="Contoso.Copier_20x20" />
+										<bt:Image size="24" resid="Contoso.Copier_24x24" />
+										<bt:Image size="32" resid="Contoso.Copier_32x32" />
+										<bt:Image size="40" resid="Contoso.Copier_40x40" />
+										<bt:Image size="80" resid="Contoso.Copier_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>copier</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>								
+								</Control>
+									
+								<Control xsi:type="Button" id="Coller" >
+									<Label resid="residLabel2" />
+									<Supertip>
+										<Title resid="residLabel" />
+										<Description resid="residToolTip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Coller_16x16" />
+										<bt:Image size="20" resid="Contoso.Coller_20x20" />
+										<bt:Image size="24" resid="Contoso.Coller_24x24" />
+										<bt:Image size="32" resid="Contoso.Coller_32x32" />
+										<bt:Image size="40" resid="Contoso.Coller_40x40" />
+										<bt:Image size="80" resid="Contoso.Coller_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>coller</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>							 
+								</Control>
+									
+								<Control xsi:type="Button" id ="Décaler">
+									<Label resid="residLabel5"/>
+									<Supertip>
+										<Title resid="residLabel" />
+										<Description resid="residToolTip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.couper_16x16" />
+										<bt:Image size="20" resid="Contoso.couper_20x20" />
+										<bt:Image size="24" resid="Contoso.couper_24x24" />
+										<bt:Image size="32" resid="Contoso.couper_32x32" />
+										<bt:Image size="40" resid="Contoso.couper_40x40" />
+										<bt:Image size="80" resid="Contoso.couper_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>déplacer</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+									
+								<Control xsi:type="Button" id ="Supprimer">
+									<Label resid="residLabel4"/>
+									<Supertip>
+										<Title resid="residLabel" />
+										<Description resid="residToolTip" />
+									</Supertip>
+									<Icon>
+										<bt:Image size="16" resid="Contoso.Supprimer_16x16" />
+										<bt:Image size="20" resid="Contoso.Supprimer_20x20" />
+										<bt:Image size="24" resid="Contoso.Supprimer_24x24" />
+										<bt:Image size="32" resid="Contoso.Supprimer_32x32" />
+										<bt:Image size="40" resid="Contoso.Supprimer_40x40" />
+										<bt:Image size="80" resid="Contoso.Supprimer_80x80" />
+									</Icon>
+									<Action xsi:type="ExecuteFunction">
+										<FunctionName>supprimer</FunctionName>
+									</Action>
+									<Enabled>false</Enabled>
+								</Control>
+								
+								</Group>-->
+								<Label resid="Contoso.Group1Label" />
+						</CustomTab>
+						
+								<!--<InsertAfter>TabReview</InsertAfter>-->
+				   </ExtensionPoint>
+					<!--<ExtensionPoint xsi:type="ContextMenu">
+						<OfficeMenu id="ContextMenuCell">
+							<Control xsi:type="Menu" id="Autre2" >
+								<Label resid="Contoso.TaskpaneButton.Label2" />
+								<Supertip>
+									<Title resid="Contoso.TaskpaneButton.Label2"  />
+									<Description resid="Contoso.TaskpaneButton.Tooltip"  />
+								</Supertip>
+								<Icon>
+									<bt:Image size="16" resid="Contoso.No$_16x16" />
+									<bt:Image size="20" resid="Contoso.No$_20x20" />
+									<bt:Image size="24" resid="Contoso.No$_24x24" />
+									<bt:Image size="32" resid="Contoso.No$_32x32" />
+									<bt:Image size="40" resid="Contoso.No$_40x40" />
+									<bt:Image size="80" resid="Contoso.No$_80x80" />
+								</Icon>
+								<Items>									
+									<Item id="copier">
+										<Label resid="residLabel1"/>
+										<Supertip>
+											<Title resid="residLabel" />
+											<Description resid="residToolTip" />
+										</Supertip>
+										<Icon>
+											<bt:Image size="16" resid="Contoso.Copier_16x16" />
+											<bt:Image size="20" resid="Contoso.Copier_20x20" />
+											<bt:Image size="24" resid="Contoso.Copier_24x24" />
+											<bt:Image size="32" resid="Contoso.Copier_32x32" />
+											<bt:Image size="40" resid="Contoso.Copier_40x40" />
+											<bt:Image size="80" resid="Contoso.Copier_80x80" />
+										</Icon>
+										<Action xsi:type="ExecuteFunction">
+											<FunctionName>copier</FunctionName>
+										</Action>
+									</Item>
+									<Item id="coller">
+										<Label resid="residLabel2"/>
+										<Supertip>
+											<Title resid="residLabel" />
+											<Description resid="residToolTip" />
+										</Supertip>
+										<Icon>
+											<bt:Image size="16" resid="Contoso.Coller_16x16" />
+											<bt:Image size="20" resid="Contoso.Coller_20x20" />
+											<bt:Image size="24" resid="Contoso.Coller_24x24" />
+											<bt:Image size="32" resid="Contoso.Coller_32x32" />
+											<bt:Image size="40" resid="Contoso.Coller_40x40" />
+											<bt:Image size="80" resid="Contoso.Coller_80x80" />
+										</Icon>
+										<Action xsi:type="ExecuteFunction">
+											<FunctionName>coller</FunctionName>
+										</Action>
+									</Item>
+									<Item id="déplacer">
+										<Label resid="residLabel5"/>
+										<Supertip>
+											<Title resid="residLabel" />
+											<Description resid="residToolTip" />
+										</Supertip>
+										<Icon>
+											<bt:Image size="16" resid="Contoso.couper_16x16" />
+											<bt:Image size="20" resid="Contoso.couper_20x20" />
+											<bt:Image size="24" resid="Contoso.couper_24x24" />
+											<bt:Image size="32" resid="Contoso.couper_32x32" />
+											<bt:Image size="40" resid="Contoso.couper_40x40" />
+											<bt:Image size="80" resid="Contoso.couper_80x80" />
+										</Icon>
+										<Action xsi:type="ExecuteFunction">
+											<FunctionName>déplacer</FunctionName>
+										</Action>
+									</Item>
+									<Item id="supprimer">
+										<Label resid="residLabel4"/>
+										<Supertip>
+											<Title resid="residLabel" />
+											<Description resid="residToolTip" />
+										</Supertip>
+										<Icon>
+											<bt:Image size="16" resid="Contoso.Supprimer_16x16" />
+											<bt:Image size="20" resid="Contoso.Supprimer_20x20" />
+											<bt:Image size="24" resid="Contoso.Supprimer_24x24" />
+											<bt:Image size="32" resid="Contoso.Supprimer_32x32" />
+											<bt:Image size="40" resid="Contoso.Supprimer_40x40" />
+											<bt:Image size="80" resid="Contoso.Supprimer_80x80" />
+										</Icon>
+										<Action xsi:type="ExecuteFunction">
+											<FunctionName>supprimer</FunctionName>
+										</Action>
+									</Item>
+									--><!--Autres items : couper, coller$--><!--
+								</Items>
+							</Control>
+						</OfficeMenu>
+					</ExtensionPoint>-->
+				</DesktopFormFactor>
+			</Host>
+		</Hosts>
+
+		<!-- You can use resources across hosts and form factors. -->
+		<Resources>
+			<!-- Icons. Required sizes 16,32,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX. -->
+			<bt:Images>
+				<bt:Image id="Contoso.tpicon_16x16" DefaultValue="https://appcommandicons.blob.core.windows.net/images/taskpane_16x.png" />
+				<bt:Image id="Contoso.tpicon_32x32" DefaultValue="~remoteAppUrl/Images/iconeiSX.png" />
+				<bt:Image id="Contoso.tpicon_80x80" DefaultValue="https://appcommandicons.blob.core.windows.net/images/taskpane_80x.png" />
+				<bt:Image id="Contoso.couper_16x16" DefaultValue="~remoteAppUrl/Images/couper16.png" />
+				<bt:Image id="Contoso.couper_20x20" DefaultValue="~remoteAppUrl/Images/couper20.png" />
+				<bt:Image id="Contoso.couper_24x24" DefaultValue="~remoteAppUrl/Images/couper24.png" />
+				<bt:Image id="Contoso.couper_32x32" DefaultValue="~remoteAppUrl/Images/couper32.png" />
+				<bt:Image id="Contoso.couper_40x40" DefaultValue="~remoteAppUrl/Images/couper40.png" />
+				<bt:Image id="Contoso.couper_80x80" DefaultValue="~remoteAppUrl/Images/couper80.png" />
+				<bt:Image id="Contoso.Copier_16x16" DefaultValue="~remoteAppUrl/Images/Copier16.png" />
+				<bt:Image id="Contoso.Copier_20x20" DefaultValue="~remoteAppUrl/Images/Copier20.png" />
+				<bt:Image id="Contoso.Copier_24x24" DefaultValue="~remoteAppUrl/Images/Copier24.png" />
+				<bt:Image id="Contoso.Copier_32x32" DefaultValue="~remoteAppUrl/Images/Copier32.png" />
+				<bt:Image id="Contoso.Copier_40x40" DefaultValue="~remoteAppUrl/Images/Copier40.png" />
+				<bt:Image id="Contoso.Copier_80x80" DefaultValue="~remoteAppUrl/Images/Copier80.png" />
+				<bt:Image id="Contoso.Coller_16x16" DefaultValue="~remoteAppUrl/Images/Coller16.png" />
+				<bt:Image id="Contoso.Coller_20x20" DefaultValue="~remoteAppUrl/Images/Coller20.png" />
+				<bt:Image id="Contoso.Coller_24x24" DefaultValue="~remoteAppUrl/Images/Coller24.png" />
+				<bt:Image id="Contoso.Coller_32x32" DefaultValue="~remoteAppUrl/Images/Coller32.png" />
+				<bt:Image id="Contoso.Coller_40x40" DefaultValue="~remoteAppUrl/Images/Coller40.png" />
+				<bt:Image id="Contoso.Coller_80x80" DefaultValue="~remoteAppUrl/Images/Coller80.png" />
+				<bt:Image id="Contoso.Supprimer_16x16" DefaultValue="~remoteAppUrl/Images/Supprimer16.png" />
+				<bt:Image id="Contoso.Supprimer_20x20" DefaultValue="~remoteAppUrl/Images/Supprimer20.png" />
+				<bt:Image id="Contoso.Supprimer_24x24" DefaultValue="~remoteAppUrl/Images/Supprimer24.png" />
+				<bt:Image id="Contoso.Supprimer_32x32" DefaultValue="~remoteAppUrl/Images/Supprimer32.png" />
+				<bt:Image id="Contoso.Supprimer_40x40" DefaultValue="~remoteAppUrl/Images/Supprimer40.png" />
+				<bt:Image id="Contoso.Supprimer_80x80" DefaultValue="~remoteAppUrl/Images/Supprimer80.png" />
+				<bt:Image id="Contoso.Ouvrir_16x16" DefaultValue="~remoteAppUrl/Images/Ouvrir16.png" />
+				<bt:Image id="Contoso.Ouvrir_20x20" DefaultValue="~remoteAppUrl/Images/Ouvrir20.png" />
+				<bt:Image id="Contoso.Ouvrir_24x24" DefaultValue="~remoteAppUrl/Images/Ouvrir24.png" />
+				<bt:Image id="Contoso.Ouvrir_32x32" DefaultValue="~remoteAppUrl/Images/Ouvrir32.png" />
+				<bt:Image id="Contoso.Ouvrir_40x40" DefaultValue="~remoteAppUrl/Images/Ouvrir40.png" />
+				<bt:Image id="Contoso.Ouvrir_80x80" DefaultValue="~remoteAppUrl/Images/Ouvrir80.png" />
+				<bt:Image id="Contoso.Chaîné_16x16" DefaultValue="~remoteAppUrl/Images/Chaîné16.png" />
+				<bt:Image id="Contoso.Chaîné_20x20" DefaultValue="~remoteAppUrl/Images/Chaîné20.png" />
+				<bt:Image id="Contoso.Chaîné_24x24" DefaultValue="~remoteAppUrl/Images/Chaîné24.png" />
+				<bt:Image id="Contoso.Chaîné_32x32" DefaultValue="~remoteAppUrl/Images/Chaîné32.png" />
+				<bt:Image id="Contoso.Chaîné_40x40" DefaultValue="~remoteAppUrl/Images/Chaîné40.png" />
+				<bt:Image id="Contoso.Chaîné_80x80" DefaultValue="~remoteAppUrl/Images/Chaîné80.png" />
+				<bt:Image id="Contoso.Yo$_16x16" DefaultValue="~remoteAppUrl/Images/Yo$16.png" />
+				<bt:Image id="Contoso.Yo$_20x20" DefaultValue="~remoteAppUrl/Images/Yo$20.png" />
+				<bt:Image id="Contoso.Yo$_24x24" DefaultValue="~remoteAppUrl/Images/Yo$24.png" />
+				<bt:Image id="Contoso.Yo$_32x32" DefaultValue="~remoteAppUrl/Images/Yo$32.png" />
+				<bt:Image id="Contoso.Yo$_40x40" DefaultValue="~remoteAppUrl/Images/Yo$40.png" />
+				<bt:Image id="Contoso.Yo$_80x80" DefaultValue="~remoteAppUrl/Images/Yo$80.png" />
+				<bt:Image id="Contoso.Réinit_16x16" DefaultValue="~remoteAppUrl/Images/Réini16.png" />
+				<bt:Image id="Contoso.Réinit_20x20" DefaultValue="~remoteAppUrl/Images/Réini20.png" />
+				<bt:Image id="Contoso.Réinit_24x24" DefaultValue="~remoteAppUrl/Images/Réini24.png" />
+				<bt:Image id="Contoso.Réinit_32x32" DefaultValue="~remoteAppUrl/Images/Réini32.png" />
+				<bt:Image id="Contoso.Réinit_40x40" DefaultValue="~remoteAppUrl/Images/Réini40.png" />
+				<bt:Image id="Contoso.Réinit_80x80" DefaultValue="~remoteAppUrl/Images/Réini80.png" />
+				<bt:Image id="Contoso.Sauver_16x16" DefaultValue="~remoteAppUrl/Images/Sauv16.png" />
+				<bt:Image id="Contoso.Sauver_20x20" DefaultValue="~remoteAppUrl/Images/Sauv20.png" />
+				<bt:Image id="Contoso.Sauver_24x24" DefaultValue="~remoteAppUrl/Images/Sauv24.png" />
+				<bt:Image id="Contoso.Sauver_32x32" DefaultValue="~remoteAppUrl/Images/Sauv32.png" />
+				<bt:Image id="Contoso.Sauver_40x40" DefaultValue="~remoteAppUrl/Images/Sauv40.png" />
+				<bt:Image id="Contoso.Sauver_80x80" DefaultValue="~remoteAppUrl/Images/Sauv80.png" />
+				<bt:Image id="Contoso.No$_16x16" DefaultValue="~remoteAppUrl/Images/No$16.png" />
+				<bt:Image id="Contoso.No$_20x20" DefaultValue="~remoteAppUrl/Images/No$20.png" />
+				<bt:Image id="Contoso.No$_24x24" DefaultValue="~remoteAppUrl/Images/No$24.png" />
+				<bt:Image id="Contoso.No$_32x32" DefaultValue="~remoteAppUrl/Images/No$32.png" />
+				<bt:Image id="Contoso.No$_40x40" DefaultValue="~remoteAppUrl/Images/No$40.png" />
+				<bt:Image id="Contoso.No$_40x40" DefaultValue="~remoteAppUrl/Images/No$64.png" />
+				<bt:Image id="Contoso.No$_80x80" DefaultValue="~remoteAppUrl/Images/No$80.png" />
+				<!--dialog-->
+				<bt:Image id="Contoso.tpiconD_16x16" DefaultValue="~remoteAppUrl/Images/ButtonPaneD16x16.png" />
+				<bt:Image id="Contoso.tpiconD_32x32" DefaultValue="~remoteAppUrl/Images/ButtonPaneD32x32.png" />
+				<bt:Image id="Contoso.tpiconD_80x80" DefaultValue="~remoteAppUrl/Images/ButtonPaneD80x80.png" />
+				<bt:Image id="Contoso.funciconD_16x16" DefaultValue="~remoteAppUrl/Images/Button16x16.png" />
+				<bt:Image id="Contoso.funciconD_32x32" DefaultValue="~remoteAppUrl/Images/Button32x32.png" />
+				<bt:Image id="Contoso.funciconD_80x80" DefaultValue="~remoteAppUrl/Images/Button80x80.png" />
+			</bt:Images>
+			<bt:Urls>	
+				<!-- <bt:Url id="Functions.Metadata.Url" DefaultValue="~remoteAppUrl/App/FunctionFile/Functions.json"/> -->
+				<!-- <bt:Url id="Functions.Script.Url" DefaultValue="~remoteAppUrl/App/FunctionFile/FunctionFile.js"/>								 -->
+				 <bt:Url id="Functions.FunctionFile.Url" DefaultValue="~remoteAppUrl/index.html" /> 
+				<bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
+				<bt:Url id="Contoso.SharedRuntime.Url" DefaultValue="~remoteAppUrl/index.html" />
+				<!--<bt:Url id="Taskpane.Url" DefaultValue="~remoteAppUrl/index.html" />"~remoteAppUrl/App/Home/Home.html" -->
+			</bt:Urls>
+			<!-- ShortStrings max characters==125.Use Web API from an add-in. -->
+			<bt:ShortStrings>				
+				<bt:String id="Functions.Namespace" DefaultValue="IS"/>
+				<bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Open">
+					<bt:Override Locale="fr-FR" Value="Ouvrir" />
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Label2" DefaultValue="Actions" />
+				<bt:String id="Contoso.TaskpaneButton.Label3" DefaultValue="Open">
+					<bt:Override Locale="fr-FR" Value="Ouvrir" />
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Label4" DefaultValue="Suspend">
+					<bt:Override Locale="fr-FR" Value="Suspendre" />
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Sauver" DefaultValue="Save">
+					<bt:Override Locale="fr-FR" Value="Sauver" />
+				</bt:String>
+				<bt:String id="Contoso.Group1Label" DefaultValue="No$"/>
+				<bt:String id="Contoso.Group2Label" DefaultValue="Access">
+					<bt:Override Locale="fr-FR" Value="Accès" />
+				</bt:String>
+				<bt:String id="Contoso.Group3Label" DefaultValue="Construction">
+					<bt:Override Locale="fr-FR" Value="Build" />
+				</bt:String>
+				<bt:String id="Contoso.Group4Label" DefaultValue="Commands">
+					<bt:Override Locale="fr-FR" Value="Commandes" />
+				</bt:String>
+				<bt:String id="Contoso.Group5Label" DefaultValue="préinitier">
+					<bt:Override Locale="fr-FR" Value="Commandes" />
+				</bt:String>
+				<bt:String id="Contoso.GetStarted.Title" DefaultValue="No$ Application">
+					<bt:Override Locale="fr-FR" Value="Application No$" />
+				</bt:String>
+				<bt:String id="residLabel" DefaultValue="Open">
+					<bt:Override Locale="fr-FR" Value="Ouvrir"/>
+				</bt:String>
+				<bt:String id="residLabel1" DefaultValue="Copy">
+					<bt:Override Locale="fr-FR" Value="Copier"/>
+				</bt:String>
+				<bt:String id="residLabel2" DefaultValue="Paste">
+					<bt:Override Locale="fr-FR" Value="Coller"/>
+				</bt:String>
+				<bt:String id="residLabel3" DefaultValue="No$D" />
+				<bt:String id="residLabel4" DefaultValue="Undo">
+					<bt:Override Locale="fr-FR" Value="Défaire"/>
+				</bt:String>
+				<bt:String id="residLabel5" DefaultValue="Move">
+					<bt:Override Locale="fr-FR" Value="Déplacer"/>
+				</bt:String>
+				<bt:String id="residLabel6" DefaultValue="Reinit">
+					<bt:Override Locale="fr-FR" Value="Réinit"/>
+				</bt:String>
+				<bt:String id="residLabel7" DefaultValue="Save">
+					<bt:Override Locale="fr-FR" Value="Sauver"/>
+				</bt:String>
+				<bt:String id="residLabel8" DefaultValue="Chain">
+					<bt:Override Locale="fr-FR" Value="Chaîner"/>
+				</bt:String>
+				<bt:String id="residLabel9" DefaultValue="Suspend">
+					<bt:Override Locale="fr-FR" Value="Suspendre"/>
+				</bt:String>
+				<bt:String id="residLabel10" DefaultValue="dialog" />
+				<bt:String id="showGallery2" DefaultValue="showGallery2" />
+				<bt:String id="TestMenu" DefaultValue="showGallery5" />
+				<bt:String id="Autre2" DefaultValue="showGallery6" />
+			</bt:ShortStrings>
+			<!-- LongStrings max characters==250. "Click to start the Web API sample add-in"Your sample add-in loaded succesfully. Go to the HOME tab and click the 'Open' button on the 'Web API' group to get started. -->
+			<bt:LongStrings>
+				<bt:String id="Contoso.TaskpaneButton.Tooltip" DefaultValue=" Default"/>
+				<bt:String id="Contoso.TaskpaneButton.Sauver" DefaultValue=" Save building data with Excel sheet">
+					<bt:Override Locale="fr-FR" Value="Non actif. Sauvegarde les données de conception avec le dossier XL"/>
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Réinit" DefaultValue="Suppress all building datas">
+					<bt:Override Locale="fr-FR" Value="Supprime toutes les données de conception"/>
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Lancer" DefaultValue="Activates or desactivates No$">
+					<bt:Override Locale="fr-FR" Value="Active ou réactive No$"/>
+				</bt:String>
+				<bt:String id="Contoso.TaskpaneButton.Suspendre" DefaultValue=" Suspend No$ and reverse">
+					<bt:Override Locale="fr-FR" Value="Suspend No$ puis le remet"/>
+				</bt:String>
+				<bt:String id="Contoso.GetStarted.Description" DefaultValue=" Accelerate and fiabilize the model building">
+					<bt:Override Locale="fr-FR" Value="Accélère et fiabilise la construction de modèles"/>
+				</bt:String>
+				<bt:String id ="residToolTip"  DefaultValue="hihi" />
+			</bt:LongStrings>
+		</Resources>
+	</VersionOverrides>
+	<!-- End Add-in Commands Mode integration. -->
+
+</OfficeApp>
+
